@@ -6,6 +6,15 @@ matrix_t::matrix_t() : elements_{ nullptr }, rows_{ 0 }, collumns_{ 0 }
 
 matrix_t::matrix_t(matrix_t const & other)
 {
+	rows_ = other.rows_;
+	columns_ = other.columns_;
+	elements_ = new int *[rows_];
+	for (unsigned int i = 0; i < rows_; ++i) {
+		elements_[i] = new int[columns_];
+			for (unsigned int j = 0; j < columns_; ++j) {
+				elements_[i][j] = other.elements_[i][j];
+			}
+		}
 }
 
 matrix_t & matrix_t::operator =(matrix_t const & other)
@@ -21,7 +30,7 @@ matrix_t & matrix_t::operator =(matrix_t const & other)
 		for (unsigned int i = 0; i < rows_; ++i) {
 			elements_[i] = new int[columns_];
 			for (unsigned int j = 0; j < columns_; ++j) {
-				elements_[i][j] = matrix.elements_[i][j];
+				elements_[i][j] = other.elements_[i][j];
 			}
 		}
 	}
@@ -32,6 +41,10 @@ matrix_t & matrix_t::operator =(matrix_t const & other)
 
 matrix_t::~matrix_t()
 {
+	for (unsigned int i = 0; i < rows_; ++i) {
+			delete[] elements_[i];
+		}
+		delete[] elements_;
 }
 
 std::size_t matrix_t::rows() const
@@ -47,12 +60,14 @@ std::size_t matrix_t::collumns() const
 matrix_t matrix_t::operator +(matrix_t const & other) const
 {
 	matrix_t result;
-	result.rows_ = rows_;
-	result.columns_ = columns_;
-	result.elements_ = new int *[rows_];
 	if (rows_ == other.rows_ && columns_ == other.columns_) {
+		result.rows_ = rows_;
+		result.columns_ = columns_;
+		result.elements_ = new int *[rows_];
+		for (std::size_t i = 0; i<collumns_; i++) {
+			result.elements_[i] = new float [collumns_];
+		}
 		for (unsigned int i = 0; i < rows_; ++i) {
-			result.elements_[i] = new int[columns_];
 			for (unsigned int j = 0; j < columns_; ++j) {
 				result.elements_[i][j] = elements_[i][j] + other.elements_[i][j];
 			}
