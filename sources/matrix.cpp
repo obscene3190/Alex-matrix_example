@@ -29,17 +29,22 @@ std::size_t matrix_t::collumns() const
 
 matrix_t matrix_t::operator +(matrix_t const & other) const
 {
+	matrix_t result;
+	result.rows = rows;
+	result.columns = columns;
+	result.data = new int *[rows];
 	if (rows == other.rows && columns == other.columns) {
 		for (unsigned int i = 0; i < rows; ++i) {
+			result.data[i] = new int[columns];
 			for (unsigned int j = 0; j < columns; ++j) {
-				other.data[i][j] = data[i][j] + other.data[i][j];
+				result.data[i][j] = data[i][j] + other.data[i][j];
 			}
 		}
 	}
 	else {
 		cout << "Something went wrong :(";
 	}
-	return other;
+	return result;
 }
 
 matrix_t matrix_t::operator -(matrix_t const & other) const
