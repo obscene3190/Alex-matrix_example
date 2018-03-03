@@ -94,9 +94,9 @@ TEST_CASE("adding matrix")
         "2 2 2" };
     std::string resultadd{
         "3, 3\n"
-        "3 3 3\n"
-        "3 3 3\n"
-        "3 3 3" };
+        "6 6 6\n"
+        "6 6 6\n"
+        "6 6 6" };
     matrix_t matrix1, matrix2, result;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
