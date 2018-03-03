@@ -52,7 +52,7 @@ TEST_CASE("adding matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    result=matrix1.add(matrix2);
+    result=matrix1+matrix2;
     std::ostringstream ostream;
     result.write( ostream );
     REQUIRE( resultadd == ostream.str() );
