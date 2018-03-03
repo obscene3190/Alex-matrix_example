@@ -10,7 +10,24 @@ matrix_t::matrix_t(matrix_t const & other)
 
 matrix_t & matrix_t::operator =(matrix_t const & other)
 {
-	return *this;
+	if (this != &matrix) {
+		for (unsigned int i = 0; i < rows; ++i) {
+			delete[] data[i];
+		}
+		delete[] data;
+		rows = matrix.rows;
+		columns = matrix.columns;
+		data = new int *[rows];
+		for (unsigned int i = 0; i < rows; ++i) {
+			data[i] = new int[columns];
+			for (unsigned int j = 0; j < columns; ++j) {
+				data[i][j] = matrix.data[i][j];
+			}
+		}
+	}
+	else {
+		return *this;
+	}
 }
 
 matrix_t::~matrix_t()
@@ -73,24 +90,7 @@ matrix_t & matrix_t::operator +=(matrix_t const & other)
 
 matrix_t & matrix_t::operator *=(matrix_t const & other)
 {
-	if (this != &matrix) {
-		for (unsigned int i = 0; i < rows; ++i) {
-			delete[] data[i];
-		}
-		delete[] data;
-		rows = matrix.rows;
-		columns = matrix.columns;
-		data = new int *[rows];
-		for (unsigned int i = 0; i < rows; ++i) {
-			data[i] = new int[columns];
-			for (unsigned int j = 0; j < columns; ++j) {
-				data[i][j] = matrix.data[i][j];
-			}
-		}
-	}
-	else {
-		return *this;
-	}
+	return *this;
 }
 
 std::istream & matrix_t::read(std::istream & stream)
