@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/obscene3190/matrix_example.svg?branch=master)]
+[![Build Status](https://travis-ci.org/obscene3190/matrix_example.svg?branch=master)](https://travis-ci.org/obscene3190/matrix_example)
 
 ```
 cmake -H. -B_builds -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON
