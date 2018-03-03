@@ -10,18 +10,18 @@ matrix_t::matrix_t(matrix_t const & other)
 
 matrix_t & matrix_t::operator =(matrix_t const & other)
 {
-	if (this != &matrix) {
-		for (unsigned int i = 0; i < rows; ++i) {
-			delete[] data[i];
+	if (this != &other) {
+		for (unsigned int i = 0; i < rows_; ++i) {
+			delete[] elements_[i];
 		}
-		delete[] data;
-		rows = matrix.rows;
-		columns = matrix.columns;
-		data = new int *[rows];
-		for (unsigned int i = 0; i < rows; ++i) {
-			data[i] = new int[columns];
-			for (unsigned int j = 0; j < columns; ++j) {
-				data[i][j] = matrix.data[i][j];
+		delete[] elements_;
+		rows_ = other.rows_;
+		columns_ = other.columns_;
+		elements_ = new int *[rows_];
+		for (unsigned int i = 0; i < rows_; ++i) {
+			elements_[i] = new int[columns_];
+			for (unsigned int j = 0; j < columns_; ++j) {
+				elements_[i][j] = matrix.elements_[i][j];
 			}
 		}
 	}
@@ -47,14 +47,14 @@ std::size_t matrix_t::collumns() const
 matrix_t matrix_t::operator +(matrix_t const & other) const
 {
 	matrix_t result;
-	result.rows = rows;
-	result.columns = columns;
-	result.data = new int *[rows];
-	if (rows == other.rows && columns == other.columns) {
-		for (unsigned int i = 0; i < rows; ++i) {
-			result.data[i] = new int[columns];
-			for (unsigned int j = 0; j < columns; ++j) {
-				result.data[i][j] = data[i][j] + other.data[i][j];
+	result.rows_ = rows_;
+	result.columns_ = columns_;
+	result.elements_ = new int *[rows_];
+	if (rows_ == other.rows_ && columns_ == other.columns_) {
+		for (unsigned int i = 0; i < rows_; ++i) {
+			result.elements_[i] = new int[columns_];
+			for (unsigned int j = 0; j < columns_; ++j) {
+				result.elements_[i][j] = elements_[i][j] + other.elements_[i][j];
 			}
 		}
 	}
