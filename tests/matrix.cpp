@@ -80,7 +80,7 @@ TEST_CASE("sub matrix")
     result.write( ostream );
     REQUIRE( input1 == ostream.str() );
 }
-TEST_CASE("adding matrix")
+TEST_CASE("mul matrix")
 {
     std::string input1{
         "3, 3\n"
