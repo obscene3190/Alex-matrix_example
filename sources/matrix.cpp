@@ -155,17 +155,3 @@ std::ostream & matrix_t::write(std::ostream & stream) const
 
 	return stream;
 }
-
-matrix_t add(matrix_t const & other) const {
-		if (rows == other.rows && columns == other.columns) {
-			for (unsigned int i = 0; i < rows; ++i) {
-				for (unsigned int j = 0; j < columns; ++j) {
-					other.data[i][j] = data[i][j] + other.data[i][j];
-				}
-			}
-		}
-		else {
-			cout << "Something went wrong :(";
-		}
-		return other;
-	}
