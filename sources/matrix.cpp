@@ -84,10 +84,10 @@
 	}
 
 	template <typename T>
-	bool checksum(matrix_t const & other) {
+	bool matrix_t<T>::checksum(matrix_t const & other) {
 		matrix_t<T> sum;
 		try {
-			sum = this + other;
+			sum = *this + other;
 		}
 		catch (bool res) {
 			return res;
@@ -118,10 +118,10 @@
 	}
 
 	template <typename T>
-	bool checksub(matrix_t const & other) {
+	bool matrix_t<T>::checksub(matrix_t const & other) {
 		matrix_t<T> sub;
 		try {
-			sub = this - other;
+			sub = *this - other;
 		}
 		catch (bool res) {
 			return res;
@@ -157,10 +157,10 @@
 	}
 
 	template <typename T>
-	bool checkmul(matrix_t const & other) {
+	bool matrix_t<T>::checkmul(matrix_t const & other) {
 		matrix_t<T> mul;
 		try {
-			mul = this + other;
+			mul = *this + other;
 		}
 		catch (bool res) {
 			return res;
@@ -184,9 +184,9 @@
 	}
 
 	template <typename T>
-	bool checksumequal(matrix_t const & other) {
+	bool matrix_t<T>::checksumequal(matrix_t const & other) {
 		try {
-			this += other;
+			*this += other;
 		}
 		catch (bool res) {
 			return res;
@@ -210,9 +210,9 @@
 	}
 
 	template <typename T>
-	bool checksubequal(matrix_t const & other) {
+	bool matrix_t<T>::checksubequal(matrix_t const & other) {
 		try {
-			this -= other;
+			*this -= other;
 		}
 		catch (bool res) {
 			return res;
@@ -249,9 +249,9 @@
 	}
 
 	template <typename T>
-	bool checkmulequal(matrix_t const & other) {
+	bool matrix_t<T>::checkmulequal(matrix_t const & other) {
 		try {
-			this *= other;
+			*this *= other;
 		}
 		catch (bool res) {
 			return res;
