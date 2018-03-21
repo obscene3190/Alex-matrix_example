@@ -121,6 +121,7 @@ public:
 		catch (bool res) {
 			return res;
 		}
+		return res;
 	}
 
 	template <typename T>
@@ -254,7 +255,7 @@ public:
 		matrix_t<T> result;
 		if (collumns_ == other.rows_) {
 			int res;
-			result.elements_ = new float *[rows_];
+			result.elements_ = new T *[rows_];
 			for (std::size_t i = 0; i < collumns_; i++) {
 				result.elements_[i] = new T [collumns_];
 			}
