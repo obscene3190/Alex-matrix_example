@@ -31,7 +31,7 @@ public:
 	std::ostream & write( std::ostream  & stream ) const;
 };
 
-template <typename T>
+	template <typename T>
 	matrix_t<T>::matrix_t() : elements_{ nullptr }, rows_{ 0 }, collumns_{ 0 }
 	{
 	}
