@@ -103,7 +103,17 @@ TEST_CASE("cheking adding matrix")
     matrix1.read( istream1 );
     matrix2.read( istream2 );
     result = matrix1 + matrix2;
-    REQUIRE_THROWS_AS(false, bool);
+    REQUIRE_THROWS_AS:
+		try {
+            matrix_t<T> sum;
+			sum = *this + other;
+		}
+		catch (bool res) {
+			if(res==false) {
+                SUCCEED;
+                return;
+            }
+		};
 }
 
 TEST_CASE("sub matrix")
