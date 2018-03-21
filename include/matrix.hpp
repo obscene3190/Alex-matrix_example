@@ -53,19 +53,17 @@ public:
 	template <typename T>
 	matrix_t<T> & matrix_t<T>::operator =(matrix_t const & other)
 	{
-		if (this != other) {
-			for (std::size_t i = 0; i < rows_; ++i) {
-				delete[] elements_[i];
-			}
-			delete[] elements_;
-			rows_ = other.rows_;
-			collumns_ = other.collumns_;
-			elements_ = new T *[rows_];
-			for (std::size_t i = 0; i < rows_; ++i) {
-				elements_[i] = new T[collumns_];
-				for (std::size_t j = 0; j < collumns_; ++j) {
-					elements_[i][j] = other.elements_[i][j];
-				}
+		for (std::size_t i = 0; i < rows_; ++i) {
+			delete[] elements_[i];
+		}
+		delete[] elements_;
+		rows_ = other.rows_;
+		collumns_ = other.collumns_;
+		elements_ = new T *[rows_];
+		for (std::size_t i = 0; i < rows_; ++i) {
+			elements_[i] = new T[collumns_];
+			for (std::size_t j = 0; j < collumns_; ++j) {
+				elements_[i][j] = other.elements_[i][j];
 			}
 		}
 		return *this;
@@ -258,7 +256,7 @@ public:
 			int res;
 			result.elements_ = new float *[rows_];
 			for (std::size_t i = 0; i < collumns_; i++) {
-				result.elements_[i] = new float[collumns_];
+				result.elements_[i] = new T [collumns_];
 			}
 			result.rows_ = rows_;
 			result.collumns_ = collumns_;
@@ -297,7 +295,7 @@ public:
 		char symbol;
 		bool success = true;
 		if (stream >> rows && stream >> symbol && symbol == ',' && stream >> collumns) {
-			float ** elements = new T *[rows];
+			T ** elements = new T *[rows];
 			for (std::size_t i = 0; success && i < rows; ++i) {
 				elements[i] = new T[collumns];
 				for (std::size_t j = 0; j < collumns; ++j) {
