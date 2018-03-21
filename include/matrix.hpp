@@ -15,17 +15,17 @@ public:
 	std::size_t collumns() const;
 
 	matrix_t operator +( matrix_t const & other ) const;
-	checksum(matrix_t const & other) const;
+	bool checksum(matrix_t const & other) const;
 	matrix_t operator -( matrix_t const & other ) const;
-	checksub(matrix_t const & other) const;
+	bool checksub(matrix_t const & other) const;
 	matrix_t operator *( matrix_t const & other ) const;
-	checkmul(matrix_t const & other) const;
+	bool checkmul(matrix_t const & other) const;
 	matrix_t & operator +=( matrix_t const & other );
-	checksumequal(matrix_t const & other) const;
+	bool checksumequal(matrix_t const & other) const;
 	matrix_t & operator -=( matrix_t const & other );
-	checksubequal(matrix_t const & other) const;
+	bool checksubequal(matrix_t const & other) const;
 	matrix_t & operator *=( matrix_t const & other );
-	checkmulequal(matrix_t const & other) const;
+	bool checkmulequal(matrix_t const & other) const;
 
 	std::istream & read( std::istream & stream );
 	std::ostream & write( std::ostream  & stream ) const;
