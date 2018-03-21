@@ -80,15 +80,18 @@
 		else {
 			throw false;
 		}
-		try {
-			matrix_t<T> sum = *this + other;
-			catch (bool res) {
-				if (res == false) {
-					return res;
-				}
-			}
-		}
 		return result;
+	}
+
+	template <typename T>
+	bool checksum(matrix_t other) {
+		matrix_t<T> sum;
+		try {
+			sum = *this + other;
+		}
+		catch (bool res) {
+			return res;
+		}
 	}
 
 	template <typename T>
@@ -115,14 +118,25 @@
 	}
 
 	template <typename T>
+	bool checksub(matrix_t other) {
+		matrix_t<T> sub;
+		try {
+			sub = *this - other;
+		}
+		catch (bool res) {
+			return res;
+		}
+	}
+
+	template <typename T>
 	matrix_t<T> matrix_t<T>::operator *(matrix_t const & other) const
 	{
 		matrix_t<T> result;
 		int res;
-		if (rows_ == other.rows_ && collumns_ == other.collumns_) {
+		if (collumns_ == other.rows_) {
 			result.elements_ = new T *[rows_];
 			for (std::size_t i = 0; i < collumns_; i++) {
-				result.elements_[i] = new T [collumns_];
+				result.elements_[i] = new T[collumns_];
 			}
 			result.rows_ = rows_;
 			result.collumns_ = collumns_;
@@ -143,6 +157,17 @@
 	}
 
 	template <typename T>
+	bool checkmul(matrix_t other) {
+		matrix_t<T> mul;
+		try {
+			mul = *this + other;
+		}
+		catch (bool res) {
+			return res;
+		}
+	}
+
+	template <typename T>
 	matrix_t<T> & matrix_t<T>::operator +=(matrix_t const & other)
 	{
 		if (rows_ == other.rows_ && collumns_ == other.collumns_) {
@@ -156,6 +181,16 @@
 			throw false;
 		}
 		return *this;
+	}
+
+	template <typename T>
+	bool checksumequal(matrix_t other) {
+		try {
+			*this += other;
+		}
+		catch (bool res) {
+			return res;
+		}
 	}
 
 	template <typename T>
@@ -175,10 +210,20 @@
 	}
 
 	template <typename T>
+	bool checksubequal(matrix_t other) {
+		try {
+			*this -= other;
+		}
+		catch (bool res) {
+			return res;
+		}
+	}
+
+	template <typename T>
 	matrix_t<T> & matrix_t<T>::operator *=(matrix_t const & other)
 	{
 		matrix_t<T> result;
-		if (rows_ == other.rows_ && collumns_ == other.collumns_) {
+		if (collumns_ == other.rows_) {
 			int res;
 			result.elements_ = new float *[rows_];
 			for (std::size_t i = 0; i < collumns_; i++) {
@@ -204,6 +249,16 @@
 	}
 
 	template <typename T>
+	bool checkmulequal(matrix_t other) {
+		try {
+			*this *= other;
+		}
+		catch (bool res) {
+			return res;
+		}
+	}
+
+	template <typename T>
 	std::istream & matrix_t<T>::read(std::istream & stream)
 	{
 		std::size_t rows;
@@ -213,7 +268,7 @@
 		if (stream >> rows && stream >> symbol && symbol == ',' && stream >> collumns) {
 			float ** elements = new T *[rows];
 			for (std::size_t i = 0; success && i < rows; ++i) {
-				elements[i] = new T [collumns];
+				elements[i] = new T[collumns];
 				for (std::size_t j = 0; j < collumns; ++j) {
 					if (!(stream >> elements[i][j])) {
 						success = false;
