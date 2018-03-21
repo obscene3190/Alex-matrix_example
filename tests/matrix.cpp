@@ -102,7 +102,7 @@ TEST_CASE("cheking adding matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_THROWS_AS:
+    REQUIRE_THROWS_AS {
 	try {
             	matrix_t<T> sum;
 		sum = *this + other;
@@ -112,7 +112,8 @@ TEST_CASE("cheking adding matrix")
                 	SUCCEED;
                		return;
             	}
-	};
+	}
+    };
 }
 
 TEST_CASE("sub matrix")
