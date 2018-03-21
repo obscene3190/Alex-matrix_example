@@ -218,7 +218,7 @@ public:
 	template <typename T>
 	bool matrix_t<T>::checksumequal(matrix_t const & other) const {
 		try {
-			*this += other;
+			this += other;
 		}
 		catch (bool res) {
 			return res;
@@ -245,7 +245,7 @@ public:
 	template <typename T>
 	bool matrix_t<T>::checksubequal(matrix_t const & other) const {
 		try {
-			*this -= other;
+			this -= other;
 		}
 		catch (bool res) {
 			return res;
@@ -285,7 +285,7 @@ public:
 	template <typename T>
 	bool matrix_t<T>::checkmulequal(matrix_t const & other) const {
 		try {
-			*this *= other;
+			this *= other;
 		}
 		catch (bool res) {
 			return res;
