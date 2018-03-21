@@ -121,7 +121,7 @@ public:
 		catch (bool res) {
 			return res;
 		}
-		return res;
+		return 0;
 	}
 
 	template <typename T>
