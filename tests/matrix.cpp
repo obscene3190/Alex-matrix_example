@@ -97,23 +97,22 @@ TEST_CASE("cheking adding matrix")
         "2 2 2\n"
         "2 2 2\n"
         "2 2 2" };
-    matrix_t<int> matrix1, matrix2, result;
+    matrix_t<int> matrix1, matrix2;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    result = matrix1 + matrix2;
     REQUIRE_THROWS_AS:
-		try {
-            matrix_t<T> sum;
-			sum = *this + other;
-		}
-		catch (bool res) {
-			if(res==false) {
-                SUCCEED;
-                return;
-            }
-		};
+	try {
+            	matrix_t<T> sum;
+		sum = *this + other;
+	}
+	catch (bool res) {
+		if(res==false) {
+                	SUCCEED;
+               		return;
+            	}
+	};
 }
 
 TEST_CASE("sub matrix")
