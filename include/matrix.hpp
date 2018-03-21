@@ -113,18 +113,6 @@ public:
 	}
 
 	template <typename T>
-	bool matrix_t<T>::checksum(matrix_t const & other) const {
-		matrix_t<T> sum;
-		try {
-			sum = *this + other;
-		}
-		catch (bool res) {
-			return res;
-		}
-		return 0;
-	}
-
-	template <typename T>
 	matrix_t<T> matrix_t<T>::operator -(matrix_t const & other) const
 	{
 		matrix_t<T> result;
@@ -145,18 +133,6 @@ public:
 			throw false;
 		}
 		return result;
-	}
-
-	template <typename T>
-	bool matrix_t<T>::checksub(matrix_t const & other) const {
-		matrix_t<T> sub;
-		try {
-			sub = *this - other;
-		}
-		catch (bool res) {
-			return res;
-		}
-		return 0;
 	}
 
 	template <typename T>
@@ -188,18 +164,6 @@ public:
 	}
 
 	template <typename T>
-	bool matrix_t<T>::checkmul(matrix_t const & other) const {
-		matrix_t<T> mul;
-		try {
-			mul = *this + other;
-		}
-		catch (bool res) {
-			return res;
-		}
-		return 0;
-	}
-
-	template <typename T>
 	matrix_t<T> & matrix_t<T>::operator +=(matrix_t const & other)
 	{
 		if (rows_ == other.rows_ && collumns_ == other.collumns_) {
@@ -216,17 +180,6 @@ public:
 	}
 
 	template <typename T>
-	bool matrix_t<T>::checksumequal(matrix_t const & other) const {
-		try {
-			*this += other;
-		}
-		catch (bool res) {
-			return res;
-		}
-		return 0;
-	}
-
-	template <typename T>
 	matrix_t<T> & matrix_t<T>::operator -=(matrix_t const & other)
 	{
 		if (rows_ == other.rows_ && collumns_ == other.collumns_) {
@@ -240,17 +193,6 @@ public:
 			throw false;
 		}
 		return *this;
-	}
-
-	template <typename T>
-	bool matrix_t<T>::checksubequal(matrix_t const & other) const {
-		try {
-			*this -= other;
-		}
-		catch (bool res) {
-			return res;
-		}
-		return 0;
 	}
 
 	template <typename T>
@@ -280,17 +222,6 @@ public:
 		}
 		*this = result;
 		return *this;
-	}
-
-	template <typename T>
-	bool matrix_t<T>::checkmulequal(matrix_t const & other) const {
-		try {
-			*this *= other;
-		}
-		catch (bool res) {
-			return res;
-		}
-		return 0;
 	}
 
 	template <typename T>
