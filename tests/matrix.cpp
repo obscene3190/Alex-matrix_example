@@ -183,8 +183,7 @@ TEST_CASE("cheking mul matrix")
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
-        "3, 3\n"
-        "2 2 2\n"
+        "2, 3\n"
         "2 2 2\n"
         "2 2 2" };
     matrix_t<int> matrix1, matrix2, result;
@@ -319,8 +318,7 @@ TEST_CASE("cheking mulequals matrix")
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
-        "3, 3\n"
-        "2 2 2\n"
+        "2, 3\n"
         "2 2 2\n"
         "2 2 2" };
     matrix_t<int> matrix1, matrix2, result;
