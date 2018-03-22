@@ -90,7 +90,7 @@ TEST_CASE("adding matrix double")
 TEST_CASE("cheking adding matrix")
 {
     std::string input1{
-        "3, 3\n"
+        "2, 3\n"
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
