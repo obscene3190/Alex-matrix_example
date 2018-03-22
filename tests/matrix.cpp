@@ -113,7 +113,7 @@ TEST_CASE("cheking adding matrix")
         }
     }
 }()); */
-	    REQUIRE_THROW_AS((matrix1+matrix2), std::invalid_argument);
+	    REQUIRE_THROWS_AS((matrix1+matrix2), std::invalid_argument);
 }
 
 TEST_CASE("sub matrix")
