@@ -107,7 +107,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 		return result;
 	}
@@ -130,7 +130,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 		return result;
 	}
@@ -158,7 +158,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 		return result;
 	}
@@ -174,7 +174,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 		return *this;
 	}
@@ -190,7 +190,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 		return *this;
 	}
@@ -218,7 +218,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 		*this = result;
 		return *this;
