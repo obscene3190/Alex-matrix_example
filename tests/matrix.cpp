@@ -103,7 +103,7 @@ TEST_CASE("cheking adding matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_THROWS_AS((matrix1+matrix2), bool);
+    REQUIRE_THROWS_AS((matrix1+matrix2), std::invalid_argument);
 }
 
 TEST_CASE("sub matrix")
@@ -145,7 +145,7 @@ TEST_CASE("cheking sub matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_THROWS_AS((matrix1-matrix2), bool);
+    REQUIRE_THROWS_AS((matrix1-matrix2), std::invalid_argument);
 }
 
 TEST_CASE("mul matrix")
@@ -191,7 +191,7 @@ TEST_CASE("cheking mul matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_THROWS_AS((matrix1*matrix2), bool);
+    REQUIRE_THROWS_AS((matrix1*matrix2), std::invalid_argument);
 }
 
 TEST_CASE("addequals matrix")
@@ -238,7 +238,7 @@ TEST_CASE("cheking addequals matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_THROWS_AS((matrix1+=matrix2), bool);
+    REQUIRE_THROWS_AS((matrix1+=matrix2), std::invalid_argument);
 }
 
 TEST_CASE("subequals matrix")
@@ -280,7 +280,7 @@ TEST_CASE("cheking subequals matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_THROWS_AS((matrix1-=matrix2), bool);
+    REQUIRE_THROWS_AS((matrix1-=matrix2), std::invalid_argument);
 }
 
 TEST_CASE("mulequals matrix")
@@ -326,5 +326,5 @@ TEST_CASE("cheking mulequals matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_THROWS_AS((matrix1*=matrix2), bool);
+    REQUIRE_THROWS_AS((matrix1*=matrix2), std::invalid_argument);
 }
