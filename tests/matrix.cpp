@@ -103,17 +103,7 @@ TEST_CASE("cheking adding matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-  /*  REQUIRE_NOTHROW([&](){
-    try {
-	result = matrix1 + matrix2;
-	}
-    catch (bool res) {
-	if(res==false) {
-                throw 1;
-        }
-    }
-}()); */
-	    REQUIRE_THROWS_AS((matrix1+matrix2), bool);
+    REQUIRE_THROWS_AS((matrix1+matrix2), bool);
 }
 
 TEST_CASE("sub matrix")
@@ -139,24 +129,24 @@ TEST_CASE("sub matrix")
     REQUIRE( input1 == ostream.str() );
 }
 
-/*TEST_CASE("cheking sub matrix")
+TEST_CASE("cheking sub matrix")
 {
     std::string input1{
-        "3, 3\n"
+        "2, 3\n"
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
         "3, 3\n"
         "2 2 2\n"
         "2 2 2\n"
-        "2 2 2" };/
-    matrix_t<int> matrix1, matrix2;
+        "2 2 2" };
+    matrix_t<int> matrix1, matrix2, result;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE( matrix1.checksub(matrix2) == false );
-} */
+    REQUIRE_THROWS_AS((matrix1-matrix2), bool);
+}
 
 TEST_CASE("mul matrix")
 {
@@ -186,10 +176,10 @@ TEST_CASE("mul matrix")
     REQUIRE( resultadd == ostream.str() );
 }
 
-/*TEST_CASE("cheking mul matrix")
+TEST_CASE("cheking mul matrix")
 {
     std::string input1{
-        "3, 3\n"
+        "2, 3\n"
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
@@ -197,13 +187,13 @@ TEST_CASE("mul matrix")
         "2 2 2\n"
         "2 2 2\n"
         "2 2 2" };
-    matrix_t<int> matrix1, matrix2;
+    matrix_t<int> matrix1, matrix2, result;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE( matrix1.checkmul(matrix2) == false );
-} */
+    REQUIRE_THROWS_AS((matrix1*matrix2), bool);
+}
 
 TEST_CASE("addequals matrix")
 {
@@ -233,10 +223,10 @@ TEST_CASE("addequals matrix")
     REQUIRE( resultadd == ostream.str() );
 }
 
-/*TEST_CASE("cheking sumequal matrix")
+TEST_CASE("cheking addequals matrix")
 {
     std::string input1{
-        "3, 3\n"
+        "2, 3\n"
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
@@ -244,13 +234,13 @@ TEST_CASE("addequals matrix")
         "2 2 2\n"
         "2 2 2\n"
         "2 2 2" };
-    matrix_t<int> matrix1, matrix2;
+    matrix_t<int> matrix1, matrix2, result;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE( matrix1.checksumequal(matrix2) == false );
-} */
+    REQUIRE_THROWS_AS((matrix1+=matrix2), bool);
+}
 
 TEST_CASE("subequals matrix")
 {
@@ -275,10 +265,10 @@ TEST_CASE("subequals matrix")
     REQUIRE( input1 == ostream.str() );
 }
 
-/*TEST_CASE("cheking subequal matrix")
+TEST_CASE("cheking subequals matrix")
 {
     std::string input1{
-        "3, 3\n"
+        "2, 3\n"
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
@@ -286,13 +276,13 @@ TEST_CASE("subequals matrix")
         "2 2 2\n"
         "2 2 2\n"
         "2 2 2" };
-    matrix_t<int> matrix1, matrix2;
+    matrix_t<int> matrix1, matrix2, result;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE( matrix1.checksubequal(matrix2) == false );
-} */
+    REQUIRE_THROWS_AS((matrix1-=matrix2), bool);
+}
 
 TEST_CASE("mulequals matrix")
 {
@@ -322,10 +312,10 @@ TEST_CASE("mulequals matrix")
     REQUIRE( resultadd == ostream.str() );
 }
 
-/*TEST_CASE("cheking mulequal matrix")
+TEST_CASE("cheking mulequals matrix")
 {
     std::string input1{
-        "3, 3\n"
+        "2, 3\n"
         "1 1 1\n"
         "1 1 1" };
     std::string input2{
@@ -333,10 +323,10 @@ TEST_CASE("mulequals matrix")
         "2 2 2\n"
         "2 2 2\n"
         "2 2 2" };
-    matrix_t<int> matrix1, matrix2;
+    matrix_t<int> matrix1, matrix2, result;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE( matrix1.checkmulequal(matrix2) == false );
-}*/
+    REQUIRE_THROWS_AS((matrix1*=matrix2), bool);
+}
