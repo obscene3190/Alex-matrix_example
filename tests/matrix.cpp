@@ -102,7 +102,7 @@ TEST_CASE("cheking adding matrix")
     std::istringstream istream2{ input2 };
     matrix1.read( istream1 );
     matrix2.read( istream2 );
-    REQUIRE_NOTHROW([&](){
+  /*  REQUIRE_NOTHROW([&](){
     try {
 	result = matrix1 + matrix2;
 	}
@@ -111,7 +111,8 @@ TEST_CASE("cheking adding matrix")
                 throw 1;
         }
     }
-}());
+}()); */
+	    REQUIRE_THROW_AS(matrix1+matrix2, std::invalid_argument);
 }
 
 TEST_CASE("sub matrix")
@@ -147,7 +148,7 @@ TEST_CASE("sub matrix")
         "3, 3\n"
         "2 2 2\n"
         "2 2 2\n"
-        "2 2 2" };
+        "2 2 2" };/
     matrix_t<int> matrix1, matrix2;
     std::istringstream istream1{ input1 };
     std::istringstream istream2{ input2 };
