@@ -107,7 +107,7 @@ public:
 			}
 		}
 		else {
-			throw std::invalid_argument("error");
+			throw false;
 		}
 		return result;
 	}
